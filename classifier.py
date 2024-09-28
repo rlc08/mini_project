@@ -39,8 +39,11 @@ def upload_pdf():
             file.save(file_path)
 
             # Perform feature extraction
+            print(file.filename)
+            print(file_path)
             features = feature_extraction(file_path)
             features = [features]  # Reshape for prediction
+            print(features)
 
             # Predict using your trained model
             result = clf.predict(features)
@@ -51,6 +54,7 @@ def upload_pdf():
             return jsonify({'result': int(result[0])})
 
         except Exception as e:
+            print(e)
             return jsonify({'error': f"An error occurred: {str(e)}"})
 
     return jsonify({'error': 'Invalid file format'})
