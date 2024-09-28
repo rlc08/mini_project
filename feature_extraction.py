@@ -284,9 +284,23 @@ def extract_featues(output):
 
 def feature_extraction(filepath):
     features = []
-    command_to_execute = 'python3 pdfid.py ' + filepath
-    stdout = Popen(command_to_execute, shell=True, stdout=PIPE).stdout
-    output = stdout.readlines()
-    if len(output) == 24:
-        features.append(extract_featues(output))
+    command_to_execute = f'python3 pdfid.py {filepath}'
+    
+    try:
+        # Execute the command and capture the output
+        stdout = subprocess.Popen(command_to_execute, shell=True, stdout=subprocess.PIPE).stdout
+        output = stdout.readlines()
+        
+        # Debugging: Print the output
+        print("Raw output from pdfid.py:", output)
+
+        # Check if the output is of expected length
+        if len(output) == 24:
+            features.append(extract_features(output))
+        else:
+            print("Unexpected output length:", len(output))
+            
+    except Exception as e:
+        print(f"Error executing command: {e}")
+    
     return features
