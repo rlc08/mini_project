@@ -1,5 +1,5 @@
 import os
-from subprocess import Popen, PIPE
+import subprocess
 
 def extract_featues(output):
     tuples = []
