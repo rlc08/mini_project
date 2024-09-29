@@ -3,6 +3,7 @@ import os
 from feature_extraction import feature_extraction  # Your custom function
 import pickle
 from flask_cors import CORS
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
