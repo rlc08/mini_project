@@ -52,8 +52,8 @@ def upload_pdf():
 
             # Clean up the file after processing
             os.remove(file_path)
-
-            return jsonify({'result': int(result[0])})
+            print(result)
+            return jsonify({'result': result[0]})
 
         except Exception as e:
             print(e)
