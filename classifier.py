@@ -42,7 +42,8 @@ def upload_pdf():
             print(file.filename)
             print(file_path)
             features = feature_extraction(file_path)
-            features = [features]  # Reshape for prediction
+            # Flatten and reshape the features for prediction
+            features = np.array(features).reshape(1, -1)
             print(features)
 
             # Predict using your trained model
