@@ -302,5 +302,6 @@ def feature_extraction(filepath):
             
     except Exception as e:
         print(f"Error executing command: {e}")
+    print("xyx",features)
     
     return features
