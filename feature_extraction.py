@@ -285,7 +285,7 @@ def extract_featues(output):
 def feature_extraction(filepath):
     features = []
     command_to_execute = f'python3 pdfid.py {filepath}'
-    
+    print(filepath)
     try:
         # Execute the command and capture the output
         stdout = subprocess.Popen(command_to_execute, shell=True, stdout=subprocess.PIPE).stdout
@@ -296,7 +296,7 @@ def feature_extraction(filepath):
 
         # Check if the output is of expected length
         if len(output) == 24:
-            features.append(extract_features(output))
+            features.append(extract_featues(output))
         else:
             print("Unexpected output length:", len(output))
             
